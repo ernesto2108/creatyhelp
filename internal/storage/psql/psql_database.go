@@ -2,9 +2,7 @@ package internal
 
 import (
 	"database/sql"
-
 	_ "github.com/lib/pq"
-
 	logs "github.com/ernesto2108/AP_CreatyHelp/internal/logs"
 )
 
@@ -12,7 +10,7 @@ type PostSqlClient struct {
 	*sql.DB
 }
 
-func InitDB(source string) *PostSqlClient {
+func NewPSqlClient(source string) *PostSqlClient {
 
 	db, err := sql.Open("postgres", source)
 
@@ -22,9 +20,9 @@ func InitDB(source string) *PostSqlClient {
 	}
 
 	err = db.Ping()
+
 	if err != nil {
 		logs.Log().Warn("cannot connect to postgres")
-		panic(err)
 	}
 
 	return &PostSqlClient{db}

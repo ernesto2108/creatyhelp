@@ -8,7 +8,6 @@ type User struct {
 	Name     string
 	Nickname string
 	Phone    int
-	Birthday time.Time
 	CreateAt time.Time
 	UpdateAt time.Time
 }
@@ -18,5 +17,4 @@ type CreateUserCmd struct {
 	Name     string    `json:"name"`
 	Nickname string    `json:"nickname"`
 	Phone    int       `json:"phone"`
-	Birthday time.Time `json:"birthday"`
 }

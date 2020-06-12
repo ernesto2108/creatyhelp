@@ -1,5 +1,23 @@
 # github.com/Microsoft/go-winio v0.4.14
 ## explicit
+# github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d
+## explicit
+# github.com/cznic/fileutil v0.0.0-20181122101858-4d67cfea8c87
+## explicit
+# github.com/cznic/golex v0.0.0-20181122101858-9c343928389c
+## explicit
+# github.com/cznic/internal v0.0.0-20181122101858-3279554c546e
+## explicit
+# github.com/cznic/mathutil v0.0.0-20181122101859-297441e03548
+## explicit
+# github.com/cznic/ql v1.2.0
+## explicit
+# github.com/cznic/sortutil v0.0.0-20181122101858-f5f958428db8
+## explicit
+# github.com/cznic/strutil v0.0.0-20181122101858-275e90344537
+## explicit
+# github.com/cznic/zappy v0.0.0-20181122101859-ca47d358d4b1
+## explicit
 # github.com/docker/distribution v2.7.1+incompatible
 ## explicit
 # github.com/docker/docker v1.13.1
@@ -7,6 +25,8 @@
 # github.com/docker/go-connections v0.4.0
 ## explicit
 # github.com/docker/go-units v0.4.0
+## explicit
+# github.com/edsrzf/mmap-go v1.0.0
 ## explicit
 # github.com/gin-contrib/sse v0.1.0
 github.com/gin-contrib/sse
@@ -27,23 +47,33 @@ github.com/go-playground/universal-translator
 github.com/go-playground/validator/v10
 # github.com/golang-migrate/migrate v3.5.4+incompatible
 ## explicit
-github.com/golang-migrate/migrate
-github.com/golang-migrate/migrate/database
-github.com/golang-migrate/migrate/database/postgres
-github.com/golang-migrate/migrate/source
-github.com/golang-migrate/migrate/source/file
+# github.com/golang-migrate/migrate/v4 v4.11.0
+## explicit
+github.com/golang-migrate/migrate/v4
+github.com/golang-migrate/migrate/v4/database
+github.com/golang-migrate/migrate/v4/database/postgres
+github.com/golang-migrate/migrate/v4/internal/url
+github.com/golang-migrate/migrate/v4/source
+github.com/golang-migrate/migrate/v4/source/file
+github.com/golang-migrate/migrate/v4/source/httpfs
 # github.com/golang/protobuf v1.4.2
 ## explicit
 github.com/golang/protobuf/proto
+# github.com/hashicorp/errwrap v1.0.0
+github.com/hashicorp/errwrap
+# github.com/hashicorp/go-multierror v1.1.0
+github.com/hashicorp/go-multierror
 # github.com/json-iterator/go v1.1.9
 github.com/json-iterator/go
 # github.com/leodido/go-urn v1.2.0
 github.com/leodido/go-urn
-# github.com/lib/pq v1.5.2
+# github.com/lib/pq v1.7.0
 ## explicit
 github.com/lib/pq
 github.com/lib/pq/oid
 github.com/lib/pq/scram
+# github.com/mattes/migrate v3.0.1+incompatible
+## explicit
 # github.com/mattn/go-isatty v0.0.12
 github.com/mattn/go-isatty
 # github.com/modern-go/concurrent v0.0.0-20180306012644-bacd9c7ef1dd
@@ -53,6 +83,10 @@ github.com/modern-go/concurrent
 ## explicit
 github.com/modern-go/reflect2
 # github.com/opencontainers/go-digest v1.0.0
+## explicit
+# github.com/pkg/errors v0.9.1
+## explicit
+# github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0
 ## explicit
 # github.com/ugorji/go/codec v1.1.7
 github.com/ugorji/go/codec
@@ -68,10 +102,18 @@ go.uber.org/zap/internal/bufferpool
 go.uber.org/zap/internal/color
 go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
-# golang.org/x/sys v0.0.0-20200523222454-059865788121
+# golang.org/x/lint v0.0.0-20200130185559-910be7a94367
+## explicit
+# golang.org/x/mod v0.2.0
+## explicit
+# golang.org/x/net v0.0.0-20200202094626-16171245cfb2
+## explicit
+# golang.org/x/sys v0.0.0-20200610111108-226ff32320da
 ## explicit
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
+# golang.org/x/tools v0.0.0-20200213224642-88e652f7a869
+## explicit
 # google.golang.org/protobuf v1.23.0
 google.golang.org/protobuf/encoding/prototext
 google.golang.org/protobuf/encoding/protowire

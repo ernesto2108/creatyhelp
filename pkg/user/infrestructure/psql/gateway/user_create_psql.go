@@ -14,7 +14,7 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 	}
 
 	query, err := tx.Exec(`INSERT INTO users (name, nickname, phone, birthday),
-	VALUES ($1, $2, $3, $4)`, u.Name, u.Nickname, u.Phone, u.Birthday)
+	VALUES ($1, $2, $3, $4)`, u.Name, u.Nickname, u.Phone)
 
 	if err != nil {
 		logs.Log().Error("cannot execute statement")
@@ -37,6 +37,5 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 		Name:     u.Name,
 		Nickname: u.Nickname,
 		Phone:    u.Phone,
-		Birthday: u.Birthday,
 	}, nil
 }

@@ -8,6 +8,7 @@ import (
 
 func AllRoutes(handler *app.CreateUsersHandler) *gin.Engine {
 
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.New()
 
 	// users
@@ -23,7 +24,6 @@ func AllRoutes(handler *app.CreateUsersHandler) *gin.Engine {
 		v1.GET("/home", func(c *gin.Context) {
 			c.JSON(http.StatusOK, gin.H{"Message" : "Hello Api!!"})
 		})
-
 
 		v1.POST("/user", handler.SaveUsersEndPoint)
 	}

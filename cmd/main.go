@@ -1,13 +1,14 @@
 package main
 
 import (
-	app "github.com/ernesto2108/AP_CreatyHelp/pkg/user/application/handlers"
 	_ "github.com/lib/pq"
 
-	_ "github.com/golang-migrate/migrate/source/file"
-	
-	"github.com/golang-migrate/migrate"
-	migration "github.com/golang-migrate/migrate/database/postgres"
+	_ "github.com/golang-migrate/migrate/v4/source/file"
+
+	"github.com/golang-migrate/migrate/v4"
+	migration "github.com/golang-migrate/migrate/v4/database/postgres"
+
+	app "github.com/ernesto2108/AP_CreatyHelp/pkg/user/application/handlers"
 
 	api "github.com/ernesto2108/AP_CreatyHelp/api/routes"
 	server "github.com/ernesto2108/AP_CreatyHelp/api/server"
@@ -22,8 +23,10 @@ const (
 
 func main() {
 	_ = logs.InitLogger()
-	client := internal.InitDB("postgres://postgres:Root@127.0.0.1:64131/creatyhelp?query")
-	doMigrate(client, "creatyhelp")
+
+	client := internal.NewPSqlClient("postgres://postgres:Root@localhost:5432/test?sslmode=disable")
+	doMigrate(client, "test")
+
 
 	handler := app.NewCreateUsersHandler(client)
 

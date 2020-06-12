@@ -9,6 +9,7 @@ var sugar *zap.SugaredLogger
 
 func InitLogger() error {
 	l, err := zap.NewDevelopment()
+
 	if err != nil {
 		_ = fmt.Errorf("cannot create zap logger %s", err.Error())
 		return err
