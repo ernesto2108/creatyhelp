@@ -3,7 +3,7 @@ package user
 import (
 	internal "github.com/ernesto2108/AP_CreatyHelp/internal/storage/psql"
 	model "github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain/models"
-	itr "github.com/ernesto2108/AP_CreatyHelp/pkg/user/infrestructure/psql/htttp"
+	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/infrestructure/psql/gateway"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
@@ -32,9 +32,9 @@ func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
 }
 
 type CreateUsersHandler struct {
-	itr.UsersCreateGateway
+	user.UsersCreateGateway
 }
 
 func NewCreateUsersHandler(cl *internal.PostSqlClient) *CreateUsersHandler {
-	return &CreateUsersHandler{itr.NewUsersCreateGateway(cl)}
+	return &CreateUsersHandler{user.NewUsersCreateGateway(cl)}
 }
