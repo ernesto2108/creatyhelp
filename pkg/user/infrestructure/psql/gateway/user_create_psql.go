@@ -13,7 +13,7 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 		return nil, err
 	}
 
-	query, err := tx.Exec("INSERT INTO users (name, nickname, phone) VALUES ($1, $2, $3)",
+	query, err := tx.Exec(`INSERT INTO users (name, nickname, phone) VALUES ($1, $2, $3)`,
 		u.Name, u.Nickname, u.Phone)
 
 	if err != nil {

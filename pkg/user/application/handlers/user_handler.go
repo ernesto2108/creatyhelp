@@ -32,6 +32,9 @@ func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
 
 }
 
+func (h *CreateUsersHandler) UpdateUsersEndPoint(c *gin.Context) {
+}
+
 func (h *CreateUsersHandler) GetIdUsersEndPoint(c *gin.Context) {
 	var user *model.User
 	id, isExist := c.Params.Get("id")
@@ -50,6 +53,12 @@ func (h *CreateUsersHandler) GetIdUsersEndPoint(c *gin.Context) {
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{"xd": user})
+}
+
+func (h *CreateUsersHandler) DeleteUsersEndPoint(c *gin.Context) {
+}
+
+func (h *CreateUsersHandler) GetAllUsersEndPoint(c *gin.Context) {
 }
 
 type CreateUsersHandler struct {

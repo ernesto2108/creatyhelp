@@ -7,7 +7,10 @@ import (
 
 type UsersCreateGateway interface {
 	Create(u *model.CreateUserCmd) (*model.User ,error)
+	Update(id int64) (*model.User, error)
 	GetId(id int64) (*model.User, error)
+	Delete(id int64) error
+	GetAll() []*model.User
 }
 
 type UsersCreateGtw struct {
