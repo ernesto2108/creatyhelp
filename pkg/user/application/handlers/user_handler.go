@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
@@ -20,7 +21,7 @@ func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
 			return
 		}
 
-		u, err := h.Create(&us)
+		u, err := h.gtw.Create(&us)
 		if err != nil {
 			log.Fatal(err)
 			c.Status(http.StatusBadRequest)
@@ -31,8 +32,28 @@ func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
 
 }
 
+func (h *CreateUsersHandler) GetIdUsersEndPoint(c *gin.Context) {
+	var user *model.User
+	id, isExist := c.Params.Get("id")
+	if isExist{
+		idNu, err := strconv.ParseInt(id, 10, 64)
+		if err != nil {
+			log.Fatal(err)
+			c.AbortWithStatus(http.StatusNotFound)
+			return
+		}
+		user, err = h.gtw.GetId(idNu)
+		if err != nil {
+			log.Fatal(err)
+			c.AbortWithStatus(http.StatusNoContent)
+			return
+		}
+	}
+	c.JSON(http.StatusOK, gin.H{"xd": user})
+}
+
 type CreateUsersHandler struct {
-	user.UsersCreateGateway
+	gtw user.UsersCreateGateway
 }
 
 func NewCreateUsersHandler(cl *internal.PostSqlClient) *CreateUsersHandler {

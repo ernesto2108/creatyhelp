@@ -26,6 +26,7 @@ func AllRoutes(handler *app.CreateUsersHandler) *gin.Engine {
 		})
 
 		v1.POST("/user", handler.SaveUsersEndPoint)
+		v1.GET("/user/{idNu}/", handler.GetIdUsersEndPoint)
 	}
 
 	return r

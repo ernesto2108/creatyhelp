@@ -7,6 +7,7 @@ import (
 
 type UsersCreateGateway interface {
 	Create(u *model.CreateUserCmd) (*model.User ,error)
+	GetId(id int64) (*model.User, error)
 }
 
 type UsersCreateGtw struct {

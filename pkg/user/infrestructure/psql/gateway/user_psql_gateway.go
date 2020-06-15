@@ -7,9 +7,9 @@ import (
 
 type UsersStorageGateway interface {
 	create(u *model.CreateUserCmd) (*model.User ,error)
+	getId(id int64) (*model.User, error)
 	//delete(id int64) error
 	//get() []*model.User
-	//getId(id int64) (*model.User, error)
 }
 
 type UsersStorage struct {

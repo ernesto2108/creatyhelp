@@ -13,8 +13,8 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 		return nil, err
 	}
 
-	query, err := tx.Exec(`INSERT INTO users (name, nickname, phone),
- 				VALUES ($1, $2, $3)`, u.Name, u.Nickname, u.Phone)
+	query, err := tx.Exec("INSERT INTO users (name, nickname, phone) VALUES ($1, $2, $3)",
+		u.Name, u.Nickname, u.Phone)
 
 	if err != nil {
 		logs.Log().Error("cannot execute statement")
@@ -22,7 +22,7 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 		return nil, err
 	}
 
-	id, err := query.LastInsertId()
+	id, err := query.RowsAffected()
 
 	if err != nil {
 		logs.Log().Error("cannot fetch last id")
