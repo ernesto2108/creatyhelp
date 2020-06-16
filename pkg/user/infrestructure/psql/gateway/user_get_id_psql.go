@@ -15,8 +15,9 @@ func (s UsersStorage) getId(id int64) (*model.User, error) {
 
 	var user model.User
 
-	err = tx.QueryRow(`SELECT id, name, nickname, phone FROM users WHERE id=$1`,
-		id).Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone)
+	err = tx.QueryRow(`SELECT id, name, nickname, phone, create_at, update_at FROM users 
+		WHERE id = $1`, id).Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone,
+			&user.CreateAt, &user.UpdateAt)
 
 	if err != nil {
 		logs.Log().Error("cannot execute statement")

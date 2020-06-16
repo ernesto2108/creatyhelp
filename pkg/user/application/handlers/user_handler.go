@@ -36,23 +36,17 @@ func (h *CreateUsersHandler) UpdateUsersEndPoint(c *gin.Context) {
 }
 
 func (h *CreateUsersHandler) GetIdUsersEndPoint(c *gin.Context) {
-	var user *model.User
-	id, isExist := c.Params.Get("id")
-	if isExist{
-		idNu, err := strconv.ParseInt(id, 10, 64)
-		if err != nil {
-			log.Fatal(err)
-			c.AbortWithStatus(http.StatusNotFound)
-			return
-		}
-		user, err = h.gtw.GetId(idNu)
-		if err != nil {
-			log.Fatal(err)
-			c.AbortWithStatus(http.StatusNoContent)
-			return
-		}
+	id, _ := c.Params.Get("id")
+	idN, _ := strconv.ParseInt(id, 10, 64)
+
+	user, err := h.gtw.GetId(idN)
+	if err != nil {
+		log.Fatal(err)
+		c.Status(http.StatusNotFound)
+		return
 	}
-	c.JSON(http.StatusOK, gin.H{"xd": user})
+	c.JSON(http.StatusOK, gin.H{"user": user})
+
 }
 
 func (h *CreateUsersHandler) DeleteUsersEndPoint(c *gin.Context) {
