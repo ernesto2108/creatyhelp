@@ -36,6 +36,7 @@ func (h *CreateUsersHandler) UpdateUsersEndPoint(c *gin.Context) {
 }
 
 func (h *CreateUsersHandler) GetIdUsersEndPoint(c *gin.Context) {
+
 	id, _ := c.Params.Get("id")
 	idN, _ := strconv.ParseInt(id, 10, 64)
 
@@ -53,6 +54,11 @@ func (h *CreateUsersHandler) DeleteUsersEndPoint(c *gin.Context) {
 }
 
 func (h *CreateUsersHandler) GetAllUsersEndPoint(c *gin.Context) {
+	u := h.gtw.GetAll()
+	if u == nil || len(u) == 0 {
+		u = []*model.User{}
+	}
+	c.JSON(http.StatusOK, gin.H{"all user": u})
 }
 
 type CreateUsersHandler struct {

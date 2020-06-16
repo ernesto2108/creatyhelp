@@ -21,17 +21,16 @@ func (s UsersStorage) getAll() []*model.User {
 	}
 	defer query.Close()
 
-	var u []*model.User
+	var users []*model.User
 	for query.Next(){
 		var user model.User
-		err := query.Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone, &user.CreateAt,
-			&user.UpdateAt)
+		err := query.Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone)
 		if err != nil {
 			logs.Log().Error("cannot read current row")
 			return nil
 		}
-		u = append(u, &user)
+		users = append(users, &user)
 	}
 
-	return u
+	return users
 }
