@@ -18,3 +18,11 @@ type CreateUserCmd struct {
 	Nickname string    `json:"nickname"`
 	Phone    int       `json:"phone"`
 }
+
+// UpdateUserCmd
+type UpdateUserCmd struct {
+	ID       int64	   `json:"id"`
+	Name     string    `json:"name"`
+	Nickname string    `json:"nickname"`
+	Phone    int       `json:"phone"`
+}

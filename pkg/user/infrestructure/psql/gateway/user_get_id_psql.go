@@ -9,7 +9,7 @@ func (s UsersStorage) getId(id int64) (*model.User, error) {
 	tx, err := s.PostSqlClient.Begin()
 
 	if err != nil {
-		logs.Log().Error("cannot create transaction")
+		logs.Log().Error("cannot search transaction")
 		return nil, err
 	}
 

@@ -15,7 +15,7 @@ func (s UsersStorage) getAll() []*model.User {
 
 	query, err := tx.Query("SELECT id, name, nickname, phone FROM users")
 	if err != nil {
-		logs.Log().Error("cannot execute statement")
+		logs.Log().Error("cannot search statement")
 		_ = tx.Rollback()
 		return nil
 	}
