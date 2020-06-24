@@ -3,6 +3,9 @@ module github.com/ernesto2108/AP_CreatyHelp
 go 1.14
 
 require (
+	cloud.google.com/go/firestore v1.2.0 // indirect
+	firebase.google.com/go v3.13.0+incompatible // indirect
+	firebase.google.com/go/v4 v4.0.0 // indirect
 	github.com/Microsoft/go-winio v0.4.14 // indirect
 	github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d // indirect
 	github.com/cznic/fileutil v0.0.0-20181122101858-4d67cfea8c87 // indirect
@@ -31,10 +34,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/remyoudompheng/bigfft v0.0.0-20200410134404-eec4a21b6bb0 // indirect
 	go.uber.org/zap v1.15.0
-	golang.org/x/lint v0.0.0-20200130185559-910be7a94367 // indirect
 	golang.org/x/mod v0.2.0 // indirect
-	golang.org/x/net v0.0.0-20200202094626-16171245cfb2 // indirect
 	golang.org/x/sys v0.0.0-20200610111108-226ff32320da // indirect
-	golang.org/x/tools v0.0.0-20200213224642-88e652f7a869 // indirect
 	gopkg.in/yaml.v2 v2.3.0 // indirect
 )

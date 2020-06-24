@@ -3,7 +3,7 @@ package user
 import (
 	logs "github.com/ernesto2108/AP_CreatyHelp/internal/logs"
 	internal "github.com/ernesto2108/AP_CreatyHelp/internal/storage/psql"
-	model "github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain/models"
+	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain"
 	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/infrestructure/psql/gateway"
 	"github.com/gin-gonic/gin"
 	"log"
@@ -13,7 +13,7 @@ import (
 
 func (h *CreateUsersHandler) SaveUsersEndPoint(c *gin.Context) {
 
-		var us model.CreateUserCmd
+		var us domain.CreateUserCmd
 		err := c.BindJSON(&us)
 
 		if err != nil {
@@ -91,7 +91,7 @@ func (h *CreateUsersHandler) DeleteUsersEndPoint(c *gin.Context) {
 func (h *CreateUsersHandler) GetAllUsersEndPoint(c *gin.Context) {
 	u := h.gtw.GetAll()
 	if u == nil || len(u) == 0 {
-		u = []*model.User{}
+		u = []*domain.User{}
 	}
 	c.JSON(http.StatusOK, gin.H{"all user": u})
 }
@@ -100,8 +100,8 @@ type CreateUsersHandler struct {
 	gtw user.UsersCreateGateway
 }
 
-func parseUpdateRequest(c *gin.Context, id int64) (*model.UpdateUserCmd, error)  {
-	var u model.UpdateUserCmd
+func parseUpdateRequest(c *gin.Context, id int64) (*domain.UpdateUserCmd, error)  {
+	var u domain.UpdateUserCmd
 	err := c.BindJSON(&u)
 
 	if err != nil {

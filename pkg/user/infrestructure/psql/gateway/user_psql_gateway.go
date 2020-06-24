@@ -2,15 +2,15 @@ package user
 
 import (
 	internal "github.com/ernesto2108/AP_CreatyHelp/internal/storage/psql"
-	model "github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain/models"
+	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain"
 )
 
 type UsersStorageGateway interface {
-	create(u *model.CreateUserCmd) (*model.User ,error)
-	update(u *model.UpdateUserCmd) *model.User
-	getId(id int64) (*model.User, error)
-	delete(id int64) *model.User
-	getAll() []*model.User
+	create(u *domain.CreateUserCmd) (*domain.User,error)
+	update(u *domain.UpdateUserCmd) *domain.User
+	getId(id int64) (*domain.User, error)
+	delete(id int64) *domain.User
+	getAll() []*domain.User
 }
 
 type UsersStorage struct {

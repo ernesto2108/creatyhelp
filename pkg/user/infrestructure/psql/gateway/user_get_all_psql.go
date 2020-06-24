@@ -2,10 +2,11 @@ package user
 
 import (
 	logs "github.com/ernesto2108/AP_CreatyHelp/internal/logs"
-	model "github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain/models"
+	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain"
+	"github.com/lib/pq"
 )
 
-func (s UsersStorage) getAll() []*model.User {
+func (s UsersStorage) getAll() []*domain.User {
 	tx, err := s.PostSqlClient.Begin()
 
 	if err != nil {
@@ -13,7 +14,9 @@ func (s UsersStorage) getAll() []*model.User {
 		return nil
 	}
 
-	query, err := tx.Query("SELECT id, name, nickname, phone FROM users")
+	timeNull := pq.NullTime{}
+
+	query, err := tx.Query("SELECT id, name, nickname, phone, created_at, updated_at FROM users")
 	if err != nil {
 		logs.Log().Error("cannot search statement")
 		_ = tx.Rollback()
@@ -21,10 +24,10 @@ func (s UsersStorage) getAll() []*model.User {
 	}
 	defer query.Close()
 
-	var users []*model.User
+	var users []*domain.User
 	for query.Next(){
-		var user model.User
-		err := query.Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone)
+		var user domain.User
+		err := query.Scan(&user.ID, &user.Name, &user.Nickname, &user.Phone, &user.CreatedAt, &timeNull)
 		if err != nil {
 			logs.Log().Error("cannot read current row")
 			return nil

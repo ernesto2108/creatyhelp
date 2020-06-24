@@ -1,11 +1,12 @@
 package user
 
 import (
+	"database/sql"
 	logs "github.com/ernesto2108/AP_CreatyHelp/internal/logs"
-	model "github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain/models"
+	"github.com/ernesto2108/AP_CreatyHelp/pkg/user/domain"
 )
 
-func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
+func (s UsersStorage) create(u *domain.CreateUserCmd) (*domain.User, error) {
 	tx, err := s.PostSqlClient.Begin()
 
 	if err != nil {
@@ -13,8 +14,35 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 		return nil, err
 	}
 
+	// Int Null
+	intNull := sql.NullInt64{}
+
+	if u.Phone == 0 {
+		intNull.Valid = false
+	} else {
+		intNull.Valid = true
+		intNull.Int64 = int64(u.Phone)
+	}
+
+	//	String Null
+	strNull := sql.NullString{}
+
+	if u.Name == " " {
+		strNull.Valid = false
+	}else {
+		strNull.Valid = true
+		strNull.String = u.Name
+	}
+
+	if u.Nickname == " " {
+		strNull.Valid = false
+	} else {
+		strNull.Valid = true
+		strNull.String = u.Nickname
+	}
+
 	query, err := tx.Exec("INSERT INTO users (name, nickname, phone) VALUES ($1, $2, $3)",
-		u.Name, u.Nickname, u.Phone)
+		strNull, strNull, intNull)
 
 	if err != nil {
 		logs.Log().Error("cannot execute statement")
@@ -32,7 +60,7 @@ func (s UsersStorage) create(u *model.CreateUserCmd) (*model.User, error) {
 
 	_ = tx.Commit()
 
-	return &model.User{
+	return &domain.User{
 		ID:       id,
 		Name:     u.Name,
 		Nickname: u.Nickname,

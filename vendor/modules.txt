@@ -1,3 +1,9 @@
+# cloud.google.com/go/firestore v1.2.0
+## explicit
+# firebase.google.com/go v3.13.0+incompatible
+## explicit
+# firebase.google.com/go/v4 v4.0.0
+## explicit
 # github.com/Microsoft/go-winio v0.4.14
 ## explicit
 # github.com/cznic/b v0.0.0-20181122101859-a26611c4d92d
@@ -102,18 +108,12 @@ go.uber.org/zap/internal/bufferpool
 go.uber.org/zap/internal/color
 go.uber.org/zap/internal/exit
 go.uber.org/zap/zapcore
-# golang.org/x/lint v0.0.0-20200130185559-910be7a94367
-## explicit
 # golang.org/x/mod v0.2.0
-## explicit
-# golang.org/x/net v0.0.0-20200202094626-16171245cfb2
 ## explicit
 # golang.org/x/sys v0.0.0-20200610111108-226ff32320da
 ## explicit
 golang.org/x/sys/internal/unsafeheader
 golang.org/x/sys/unix
-# golang.org/x/tools v0.0.0-20200213224642-88e652f7a869
-## explicit
 # google.golang.org/protobuf v1.23.0
 google.golang.org/protobuf/encoding/prototext
 google.golang.org/protobuf/encoding/protowire
